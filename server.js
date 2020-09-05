@@ -1,23 +1,21 @@
 import express from 'express';
 import Messages from './dbMessages.js';
 import './db/index.js';
-
-import Pusher from 'pusher';
+import cors from 'cors';
 
 // app config
 const app = express();
 const port = process.env.PORT || 9000;
 
-const pusher = new Pusher({
-  appId: '1067240',
-  key: 'a26cdf4116a20abcb492',
-  secret: '961f4dce3f789d6dd747',
-  cluster: 'ap3',
-  encrypted: true,
-});
-
 // middlewares
 app.use(express.json());
+app.use(cors());
+
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Headers', '*');
+//   next();
+// });
 
 // API routes
 app.get('/', (req, res) => {
