@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/v1/messages/sync', (req, res) => {
-  Messages.find((err, data) => {
+  Messages.find({}, {_id: 0}, (err, data) => {
     if (err) {
       res.status(500).send(err);
     }
